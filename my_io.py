@@ -17,6 +17,7 @@ def get_accuracy():
     eps = float(input("Введите точность: "))
     return eps
 
+
 def get_condition(a):
     x_0 = a
     y_0 = float(input("Введите y_0: "))
@@ -25,5 +26,7 @@ def get_condition(a):
 
 
 def print_table(result):
-    print(tabulate(result, headers='firstrow'))
+    table = [['№', 'x', 'y', 'f(x,y)']]
+    table += result
+    print(tabulate(table, headers='firstrow'))
 
