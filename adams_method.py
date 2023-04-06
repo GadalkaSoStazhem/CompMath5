@@ -1,11 +1,11 @@
-def adams3(f, a, b, n, y_0, eps):
-    h = (b - a) / (n - 1)
+def adams3(f, a, n, h, y_0):
+
     print('h', h)
     result = []
     y = y_0
     for i in range(3):
         x = a + i * h
-        row = [i, x, y, f(x, y)]
+        row = [i, x, round(y, 4), round(f(x, y), 4)]
         result.append(row)
         y = runge_kutt(f, x, y, h)
 
@@ -15,12 +15,10 @@ def adams3(f, a, b, n, y_0, eps):
         y_next = y + (h/12) * (23 * f(x, y)
                                - 16 * f(result[i - 2][1], result[i - 2][2])
                                + 5 * f(result[i - 3][1], result[i - 3][2]))
-        y_comp = 0
-        """while (abs(y_comp - y_next) > eps):
-            y_comp = y_next
-            y_next = y + (h / 12) * (5 * f(x + h, y_next) + 8 * f(x, y) - f(result[i - 2][1], result[i - 2][2]))"""
-        y_next = y + (h / 12) * (5 * f(x + h, y_next) + 8 * f(x, y) - f(result[i - 2][1], result[i - 2][2]))
-        row = [i, x + h, y_next, f(x + h, y_next)]
+        y_next = y + (h / 12) * (5 * f(x + h, y_next)
+                                 + 8 * f(x, y)
+                                 - f(result[i - 2][1], result[i - 2][2]))
+        row = [i, x + h, round(y_next, 4), round(f(x + h, y_next), 4)]
         result.append(row)
 
     return result
