@@ -49,7 +49,7 @@ def print_equation(number):
     elif number == 7:
         print('y\' = e^x / ((1 + e^(2x)) * y^2)')
     elif number == 8:
-        print('y\' = 4xy - 4y^3')
+        print('y\' = 4xy - 4x^3')
 
 
 def print_table(result):
