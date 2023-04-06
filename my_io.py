@@ -53,7 +53,7 @@ def print_equation(number):
 
 
 def print_table(result):
-    table = [['№', 'x', 'y', 'f(x,y)', 'delta_y']]
+    table = [['№', 'x', 'y', 'f(x,y)', 'error']]
     table += result
     print(tabulate(table, headers='firstrow'))
 
