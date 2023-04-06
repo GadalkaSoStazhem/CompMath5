@@ -1,10 +1,8 @@
-from scipy.special import logsumexp
 def adams3(f, a, b, n, y_0, eps):
     h = (b - a) / (n - 1)
     print('h', h)
     result = []
     y = y_0
-
     for i in range(3):
         x = a + i * h
         row = [i, x, y, f(x, y)]
@@ -21,7 +19,6 @@ def adams3(f, a, b, n, y_0, eps):
         """while (abs(y_comp - y_next) > eps):
             y_comp = y_next
             y_next = y + (h / 12) * (5 * f(x + h, y_next) + 8 * f(x, y) - f(result[i - 2][1], result[i - 2][2]))"""
-
         y_next = y + (h / 12) * (5 * f(x + h, y_next) + 8 * f(x, y) - f(result[i - 2][1], result[i - 2][2]))
         row = [i, x + h, y_next, f(x + h, y_next)]
         result.append(row)

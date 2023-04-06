@@ -2,8 +2,8 @@ from tabulate import tabulate
 
 
 def get_number():
-    number = int(input("Введите номер примера от 1 до 5 "))
-    if number < 1 or number > 5:
+    number = int(input("Введите номер примера от 1 до 7 "))
+    if number < 1 or number > 7:
         return None
     return number
 
