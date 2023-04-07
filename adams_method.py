@@ -1,7 +1,7 @@
-def adams3(f, a, n, h, y_0, an_solution):
+def adams4(f, a, n, h, y_0, an_solution):
     result = []
     y = y_0
-    for i in range(3):
+    for i in range(4):
         x = a + i * h
         delta = None
         if an_solution != None:
@@ -10,15 +10,17 @@ def adams3(f, a, n, h, y_0, an_solution):
         result.append(row)
         y = runge_kutt(f, x, y, h)
 
-    for i in range(3, n):
+    for i in range(4, n):
         x = result[i - 1][1]
         y = result[i - 1][2]
-        y_next = y + (h/12) * (23 * f(x, y)
-                               - 16 * f(result[i - 2][1], result[i - 2][2])
-                               + 5 * f(result[i - 3][1], result[i - 3][2]))
-        y_next = y + (h / 12) * (5 * f(x + h, y_next)
-                                 + 8 * f(x, y)
-                                 - f(result[i - 2][1], result[i - 2][2]))
+        y_next = y + (h / 24) * (55 * f(x, y)
+                                 - 59 * f(result[i - 2][1], result[i - 2][2])
+                                 + 37 * f(result[i - 3][1], result[i - 3][2])
+                                 - 9 * f(result[i - 4][1], result[i - 4][2]))
+        y_next = y + (h / 24) * (9 * f(x + h, y_next)
+                                 + 19 * f(x, y)
+                                 - 5 * f(result[i - 2][1], result[i - 2][2])
+                                 + f(result[i - 3][1], result[i - 3][2]))
         delta = None
         if an_solution != None:
             delta = abs(y_next - an_solution(x + h))
